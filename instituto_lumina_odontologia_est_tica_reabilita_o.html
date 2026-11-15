@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INSTITUTO LUMINA — Odontologia Estética &amp; Reabilitação | Prévia Sites.Gu</title>
+
+  <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Plus Jakarta Sans (Minimalist Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Configuração de Design Tokens Quiet Luxury -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0D0D0F',
+            charcoal: '#16161A',
+            alabaster: '#F7F5F0',
+            champagne: {
+              DEFAULT: '#C5A47E',
+              light: '#DFC7A7',
+              dark: '#9F7F59'
+            },
+            stonegray: '#7A746B'
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          },
+          boxShadow: {
+            atelier: '0 24px 60px -15px rgba(13, 13, 15, 0.08)',
+            'gold-soft': '0 14px 34px -10px rgba(197, 164, 126, 0.35)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #F7F5F0;
+      color: #0D0D0F;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .font-editorial {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* Fundo Arquitetônico do Hero */
+    .hero-architectural-bg {
+      background-color: #0D0D0F;
+      background-image:
+        radial-gradient(circle at 76% 36%, rgba(197, 164, 126, 0.14) 0%, transparent 48%),
+        radial-gradient(circle at 18% 82%, rgba(197, 164, 126, 0.07) 0%, transparent 45%),
+        linear-gradient(90deg, rgba(197, 164, 126, 0.05) 1px, transparent 1px),
+        linear-gradient(rgba(197, 164, 126, 0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 120px 120px, 120px 120px;
+    }
+
+    /* Botão Dourado Champagne Escovado */
+    .btn-champagne {
+      background: linear-gradient(135deg, #C5A47E 0%, #B38E65 100%);
+      color: #0D0D0F;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-champagne:hover {
+      background: linear-gradient(135deg, #D5B692 0%, #C5A47E 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px -8px rgba(197, 164, 126, 0.45);
+    }
+
+    /* Item do Lookbook de Protocolos */
+    .protocol-row {
+      border-bottom: 1px solid rgba(122, 116, 107, 0.22);
+      transition: all 0.28s ease;
+    }
+
+    .protocol-row:hover {
+      padding-left: 0.65rem;
+      border-bottom-color: #C5A47E;
+    }
+
+    .protocol-row.active {
+      padding-left: 0.85rem;
+      border-bottom-color: #0D0D0F;
+    }
+
+    /* Comparador Antes & Depois */
+    .comparison-wrapper {
+      position: relative;
+      user-select: none;
+      touch-action: pan-y;
+    }
+
+    /* Animação suave */
+    @keyframes fadeUpSoft {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-editorial {
+      animation: fadeUpSoft 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Drawer Slide-Over */
+    .drawer-backdrop {
+      transition: opacity 0.3s ease;
+    }
+
+    .drawer-panel {
+      transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Destaque VIP no CRM */
+    @keyframes goldPulseRow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(197, 164, 126, 0.5);
+        border-color: #C5A47E;
+      }
+      50% {
+        box-shadow: 0 0 0 6px rgba(197, 164, 126, 0);
+        border-color: #0D0D0F;
+      }
+    }
+
+    .crm-vip-highlight {
+      animation: goldPulseRow 1.6s ease-in-out 2;
+      background-color: #FAF6F0 !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-champagne selection:text-obsidian">
+
+  <!-- ===================================================================== -->
+  <!-- CABEÇALHO MINIMALISTA FIXO (ESTILO ATELIER ARQUITETÔNICO)              -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-40 bg-obsidian/92 backdrop-blur-md border-b border-champagne/20 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3">
+      <!-- Monograma Arquitetônico IL + Logotipo -->
+      <a href="#topo" onclick="switchAppView('patient')" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 border border-champagne/70 flex items-center justify-center relative transition-colors group-hover:border-champagne">
+          <span class="font-editorial text-xl tracking-wider text-champagne font-semibold">IL</span>
+          <span class="w-1.5 h-1.5 bg-champagne absolute -top-0.5 -right-0.5"></span>
+        </div>
+        <div>
+          <span class="block text-xs sm:text-sm font-semibold tracking-[0.26em] uppercase text-white leading-tight">
+            INSTITUTO LUMINA
+          </span>
+          <span class="block text-[10px] tracking-[0.18em] uppercase text-champagne/85 mt-0.5">
+            Odontologia Estética &amp; Reabilitação
+          </span>
+        </div>
+      </a>
+
+      <!-- Navegação Discreta (Visão do Paciente) -->
+      <nav id="patient-nav-links" class="hidden xl:flex items-center gap-8 text-[11px] uppercase tracking-[0.2em] text-stone-300">
+        <a href="#conceito" class="hover:text-champagne transition-colors">O Conceito</a>
+        <a href="#protocolos" class="hover:text-champagne transition-colors">Protocolos</a>
+        <a href="#casos-clinicos" class="hover:text-champagne transition-colors">Casos Clínicos</a>
+        <a href="#unidade" class="hover:text-champagne transition-colors">Unidade</a>
+      </nav>
+
+      <!-- Controles à Direita: Alternador de Visão + Botão Agendar Concierge -->
+      <div class="flex items-center gap-2.5 sm:gap-3 ml-auto xl:ml-0">
+        <!-- Seletor Visão do Paciente vs. Painel CRM -->
+        <div class="flex items-center bg-charcoal border border-champagne/25 p-1 rounded-none sm:rounded-sm" role="tablist">
+          <button
+            id="tab-view-patient"
+            type="button"
+            onclick="switchAppView('patient')"
+            class="px-3 py-1.5 text-[10px] sm:text-[11px] uppercase tracking-[0.14em] font-semibold transition-all bg-champagne text-obsidian"
+          >
+            Visão do Paciente
+          </button>
+          <button
+            id="tab-view-crm"
+            type="button"
+            onclick="switchAppView('crm')"
+            class="px-3 py-1.5 text-[10px] sm:text-[11px] uppercase tracking-[0.14em] font-medium transition-all text-stone-300 hover:text-white flex items-center gap-1.5"
+          >
+            <span>Painel da Clínica (CRM)</span>
+            <span id="crm-live-badge" class="inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-bold bg-champagne/20 text-champagne border border-champagne/40">
+              5
+            </span>
+          </button>
+        </div>
+
+        <!-- Botão Dourado Agendar Concierge -->
+        <button
+          type="button"
+          onclick="openBookingDrawer()"
+          class="hidden sm:inline-flex items-center gap-2 btn-champagne px-4 py-2.5 text-[11px] uppercase"
+        >
+          <span>Agendar Concierge</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- MODO 1: VISÃO DO PACIENTE (EDITORIAL QUIET LUXURY)                    -->
+  <!-- ===================================================================== -->
+  <main id="view-patient" class="flex-1 animate-editorial">
+
+    <!-- 1. HERO EDITORIAL FULL-BLEED (88vh) -->
+    <section id="topo" class="hero-architectural-bg min-h-[88vh] text-white relative flex flex-col justify-between overflow-hidden">
+      <!-- Conteúdo Principal Centralizado/Assimétrico -->
+      <div class="max-w-7xl mx-auto w-full px-4 sm:px-8 pt-14 pb-12 lg:pt-20 lg:pb-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center my-auto">
+        <!-- Coluna Narrativa Editorial -->
+        <div class="lg:col-span-7 space-y-7 text-center lg:text-left">
+          <div class="inline-flex items-center gap-3">
+            <span class="w-8 h-[1px] bg-champagne"></span>
+            <span class="text-[11px] sm:text-xs uppercase tracking-[0.26em] text-champagne font-medium">
+              EXCELÊNCIA EM ODONTOLOGIA ESTÉTICA &amp; DIGITAL
+            </span>
+          </div>
+
+          <h1 class="font-editorial text-5xl sm:text-6xl lg:text-[4.65rem] font-normal leading-[1.03] tracking-tight text-white">
+            A arquitetura do <span class="italic text-champagne-light font-normal">sorriso natural.</span>
+          </h1>
+
+          <p class="text-sm sm:text-base text-stone-300/90 font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
+            Lentes de contato em porcelana ultrafina esculpidas artesanalmente, planejamento digital tridimensional e atendimento privativo em ambiente boutique — onde cada detalhe respeita a harmonia singular do seu rosto.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <button
+              type="button"
+              onclick="openBookingDrawer()"
+              class="w-full sm:w-auto btn-champagne px-8 py-4 text-xs uppercase tracking-[0.16em]"
+            >
+              Agendar Avaliação Privativa
+            </button>
+
+            <a
+              href="#protocolos"
+              class="w-full sm:w-auto px-8 py-4 border border-champagne/40 hover:border-champagne text-white hover:text-champagne text-xs uppercase tracking-[0.16em] font-medium transition-colors text-center"
+            >
+              Explorar Protocolos
+            </a>
+          </div>
+        </div>
+
+        <!-- Coluna Direita: Ilustração Vetorial Artística de Proporção Áurea Dental -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="w-full max-w-md border border-champagne/25 bg-charcoal/55 backdrop-blur-xs p-6 sm:p-8 relative">
+            <!-- Cantoneiras Arquitetônicas -->
+            <span class="w-3 h-3 border-t border-l border-champagne absolute top-0 left-0"></span>
+            <span class="w-3 h-3 border-t border-r border-champagne absolute top-0 right-0"></span>
+            <span class="w-3 h-3 border-b border-l border-champagne absolute bottom-0 left-0"></span>
+            <span class="w-3 h-3 border-b border-r border-champagne absolute bottom-0 right-0"></span>
+
+            <div class="flex items-center justify-between text-[10px] uppercase tracking-[0.22em] text-champagne/80 mb-4">
+              <span>Proporção Áurea • φ 1.618</span>
+              <span>DSD Atelier 3D</span>
+            </div>
+
+            <!-- SVG Artístico Minimalista em Traços Dourados -->
+            <svg class="w-full h-64 sm:h-72" viewBox="0 0 360 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Círculos de Construção Áurea -->
+              <circle cx="180" cy="140" r="115" stroke="#C5A47E" stroke-opacity="0.22" stroke-width="0.9" />
+              <circle cx="180" cy="140" r="78" stroke="#C5A47E" stroke-opacity="0.3" stroke-dasharray="3 4" stroke-width="0.9" />
+              <line x1="30" y1="140" x2="330" y2="140" stroke="#C5A47E" stroke-opacity="0.2" stroke-width="0.8" />
+              <line x1="180" y1="18" x2="180" y2="262" stroke="#C5A47E" stroke-opacity="0.28" stroke-width="0.8" />
+
+              <!-- Curva Labial / Arco do Sorriso Harmônico -->
+              <path
+                d="M52 128C92 196 268 196 308 128"
+                stroke="#C5A47E"
+                stroke-width="1.3"
+                stroke-linecap="round"
+              />
+              <path
+                d="M72 122C112 168 248 168 288 122"
+                stroke="#DFC7A7"
+                stroke-opacity="0.45"
+                stroke-width="0.9"
+                stroke-dasharray="2 3"
+              />
+
+              <!-- Escultura Minimalista dos Incisivos Centrais e Laterais em Traço Dourado -->
+              <!-- Incisivo Central Esquerdo -->
+              <path
+                d="M144 96C144 88 152 84 162 84C171 84 176 88 176 96V146C176 155 170 160 160 160C150 160 144 155 144 146V96Z"
+                fill="url(#champagneSilk)"
+                stroke="#C5A47E"
+                stroke-width="1.5"
+              />
+              <!-- Incisivo Central Direito -->
+              <path
+                d="M184 96C184 88 189 84 198 84C208 84 216 88 216 96V146C216 155 210 160 200 160C190 160 184 155 184 146V96Z"
+                fill="url(#champagneSilk)"
+                stroke="#C5A47E"
+                stroke-width="1.5"
+              />
+              <!-- Incisivo Lateral Esquerdo -->
+              <path
+                d="M114 102C114 95 120 92 127 92C134 92 139 95 139 102V141C139 148 134 152 126.5 152C119 152 114 148 114 141V102Z"
+                stroke="#C5A47E"
+                stroke-opacity="0.78"
+                stroke-width="1.2"
+              />
+              <!-- Incisivo Lateral Direito -->
+              <path
+                d="M221 102C221 95 226 92 233 92C240 92 246 95 246 102V141C246 148 241 152 233.5 152C226 152 221 148 221 141V102Z"
+                stroke="#C5A47E"
+                stroke-opacity="0.78"
+                stroke-width="1.2"
+              />
+
+              <!-- Pontos de Referência Biométrica -->
+              <circle cx="160" cy="122" r="2.2" fill="#DFC7A7" />
+              <circle cx="200" cy="122" r="2.2" fill="#DFC7A7" />
+              <circle cx="180" cy="160" r="2.5" fill="#C5A47E" />
+
+              <!-- Cotas Arquitetônicas Inferiores -->
+              <line x1="144" y1="215" x2="216" y2="215" stroke="#C5A47E" stroke-opacity="0.6" stroke-width="0.9" />
+              <line x1="144" y1="210" x2="144" y2="220" stroke="#C5A47E" stroke-opacity="0.6" stroke-width="0.9" />
+              <line x1="216" y1="210" x2="216" y2="220" stroke="#C5A47E" stroke-opacity="0.6" stroke-width="0.9" />
+              <text x="180" y="232" text-anchor="middle" fill="#C5A47E" font-size="9" letter-spacing="2.5" font-family="Plus Jakarta Sans">
+                0.2 MM ULTRA-THIN VENEER
+              </text>
+
+              <defs>
+                <linearGradient id="champagneSilk" x1="180" y1="84" x2="180" y2="160" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#C5A47E" stop-opacity="0.24" />
+                  <stop offset="1" stop-color="#C5A47E" stop-opacity="0.03" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <div class="pt-3 border-t border-champagne/20 flex items-center justify-between text-[11px] text-stone-400">
+              <span>Escaneamento Intraoral HD</span>
+              <span class="font-editorial italic text-champagne text-sm">Lumina Signature</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra Inferior Flutuante em Vidro Fosco com 3 Pilares de Autoridade -->
+      <div class="border-t border-champagne/25 bg-white/[0.03] backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 py-5 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-champagne/25 text-center">
+          <div class="py-2.5 md:py-1 px-4">
+            <p class="font-editorial text-2xl sm:text-3xl text-champagne font-medium">+14.000 Sorrisos Planejados</p>
+            <p class="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-0.5">Casuística Clínica Documentada</p>
+          </div>
+          <div class="py-2.5 md:py-1 px-4">
+            <p class="font-editorial text-2xl sm:text-3xl text-white font-medium">Laboratório Digital CAD/CAM 3D</p>
+            <p class="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-0.5">Cerâmica Suíça &amp; Fresagem Própria</p>
+          </div>
+          <div class="py-2.5 md:py-1 px-4">
+            <p class="font-editorial text-2xl sm:text-3xl text-champagne font-medium">Avaliação 5.0 ★ Google</p>
+            <p class="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-0.5">Excelência Reconhecida pelos Pacientes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SEÇÃO 'O CONCEITO' (SPREAD EDITORIAL ASSIMÉTRICO EM FUNDO ALABASTRO) -->
+    <section id="conceito" class="py-20 sm:py-28 px-4 sm:px-8 bg-alabaster border-b border-stonegray/20">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <!-- Coluna Esquerda: Composição Arquitetônica + Citação do Diretor Clínico -->
+        <div class="lg:col-span-5">
+          <div class="bg-white border border-stonegray/25 p-7 sm:p-10 shadow-atelier relative">
+            <div class="flex items-center justify-between border-b border-stonegray/20 pb-4 mb-6">
+              <span class="text-[10px] uppercase tracking-[0.24em] text-champagne-dark font-semibold">
+                Método Lumina 3D
+              </span>
+              <span class="font-editorial italic text-stonegray text-sm">Manifesto Clínico</span>
+            </div>
+
+            <!-- Desenho Arquitetônico Minimalista -->
+            <div class="bg-obsidian text-white p-6 mb-7 relative overflow-hidden">
+              <svg class="w-full h-36" viewBox="0 0 300 130" fill="none">
+                <rect x="8" y="8" width="284" height="114" stroke="#C5A47E" stroke-opacity="0.3" stroke-width="0.8" />
+                <path d="M40 95C85 35 215 35 260 95" stroke="#C5A47E" stroke-width="1.3" />
+                <path d="M70 95C105 55 195 55 230 95" stroke="#DFC7A7" stroke-opacity="0.45" stroke-dasharray="3 3" />
+                <line x1="150" y1="16" x2="150" y2="114" stroke="#C5A47E" stroke-opacity="0.35" />
+                <circle cx="150" cy="50" r="3" fill="#C5A47E" />
+                <text x="150" y="110" text-anchor="middle" fill="#DFC7A7" font-size="8.5" letter-spacing="3" font-family="Plus Jakarta Sans">
+                  ESTÉTICA BIOMIMÉTICA
+                </text>
+              </svg>
+            </div>
+
+            <blockquote class="font-editorial italic text-2xl sm:text-[1.7rem] text-obsidian leading-snug mb-5">
+              “A verdadeira sofisticação em odontologia estética está na naturalidade imperceptível — dentes com textura, translucidez e proporção que parecem ter nascido com você.”
+            </blockquote>
+
+            <div class="pt-4 border-t border-stonegray/20 flex items-center justify-between">
+              <div>
+                <p class="text-xs uppercase tracking-[0.18em] font-semibold text-obsidian">Dr. Rafael Valença</p>
+                <p class="text-[11px] text-stonegray mt-0.5">Diretor Clínico • CRO-SP 118.420</p>
+              </div>
+              <span class="font-editorial italic text-xl text-champagne-dark">R. Valença</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna Direita: Narrativa Editorial -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-3">
+            <span class="w-8 h-[1px] bg-champagne-dark"></span>
+            <span class="text-[11px] uppercase tracking-[0.25em] text-champagne-dark font-semibold">O Conceito</span>
+          </div>
+
+          <h2 class="font-editorial text-4xl sm:text-5xl lg:text-[3.35rem] text-obsidian leading-[1.08] font-normal">
+            Preservação biológica, arte cerâmica e <span class="italic text-champagne-dark">previsibilidade absoluta.</span>
+          </h2>
+
+          <p class="text-sm sm:text-base text-stonegray leading-relaxed">
+            No Instituto Lumina, cada reabilitação começa longe da cadeira odontológica tradicional. Realizamos um estudo facial completo em 3D para harmonizar o desenho do sorriso com o movimento dos lábios, a linha do olhar e a personalidade de cada paciente.
+          </p>
+
+          <p class="text-sm sm:text-base text-stonegray leading-relaxed">
+            Antes de qualquer intervenção definitiva, você experimenta o seu novo sorriso diretamente em boca por meio do <strong>Mockup Test-Drive</strong>, aprovando formato, comprimento e luminosidade com tranquilidade total.
+          </p>
+
+          <!-- 3 Pilares Editoriais em Filetes Finos -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-stonegray/25">
+            <div>
+              <span class="font-editorial text-2xl text-champagne-dark block">01.</span>
+              <h3 class="text-xs uppercase tracking-[0.16em] font-semibold text-obsidian mt-1">Desgaste Mínimo</h3>
+              <p class="text-xs text-stonegray mt-1.5 leading-relaxed">Preservação máxima do esmalte dental natural com lentes de 0,2 mm.</p>
+            </div>
+            <div>
+              <span class="font-editorial text-2xl text-champagne-dark block">02.</span>
+              <h3 class="text-xs uppercase tracking-[0.16em] font-semibold text-obsidian mt-1">Conforto Absoluto</h3>
+              <p class="text-xs text-stonegray mt-1.5 leading-relaxed">Anestesia computadorizada indolor e escaneamento digital sem moldagens.</p>
+            </div>
+            <div>
+              <span class="font-editorial text-2xl text-champagne-dark block">03.</span>
+              <h3 class="text-xs uppercase tracking-[0.16em] font-semibold text-obsidian mt-1">Atelier Próprio</h3>
+              <p class="text-xs text-stonegray mt-1.5 leading-relaxed">Ceramistas mestres trabalhando em sintonia direta com o especialista.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. LOOKBOOK INTERATIVO DE PROTOCOLOS (SEM GRADE COMUM DE CARDS) -->
+    <section id="protocolos" class="py-20 sm:py-28 px-4 sm:px-8 bg-white border-b border-stonegray/20">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
+          <div>
+            <div class="inline-flex items-center gap-3 mb-3">
+              <span class="w-8 h-[1px] bg-champagne-dark"></span>
+              <span class="text-[11px] uppercase tracking-[0.25em] text-champagne-dark font-semibold">Lookbook Clínico</span>
+            </div>
+            <h2 class="font-editorial text-4xl sm:text-5xl text-obsidian font-normal">
+              Protocolos <span class="italic text-champagne-dark">Exclusivos</span>
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm text-stonegray max-w-md">
+            Selecione um protocolo na lista editorial ao lado para explorar a indicação clínica, tecnologia aplicada e tempo médio de execução.
+          </p>
+        </div>
+
+        <!-- Layout 2 Painéis: Lista Editorial Numerada + Palco Interativo -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          <!-- Painel Esquerdo: Lista Numerada Clicável -->
+          <div id="protocols-editorial-list" class="lg:col-span-5 border-t border-stonegray/22">
+            <!-- Renderizado via JS -->
+          </div>
+
+          <!-- Painel Direito: Palco Editorial Interativo -->
+          <div id="protocol-editorial-stage" class="lg:col-span-7 bg-alabaster border border-stonegray/25 p-7 sm:p-11 shadow-atelier">
+            <!-- Renderizado via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. GALERIA DE CASOS CLÍNICOS (COMPARADOR INTERATIVO ANTES & DEPOIS) -->
+    <section id="casos-clinicos" class="py-20 sm:py-28 px-4 sm:px-8 bg-obsidian text-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-[11px] uppercase tracking-[0.26em] text-champagne font-semibold block mb-3">
+            Galeria Documentada
+          </span>
+          <h2 class="font-editorial text-4xl sm:text-5xl text-white font-normal">
+            Casos Clínicos <span class="italic text-champagne-light">Antes &amp; Depois</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-400 mt-3 leading-relaxed">
+            Arraste o controle deslizante sobre a imagem clínica para comparar o diagnóstico inicial com o resultado final planejado em 3D.
+          </p>
+        </div>
+
+        <!-- Seletor dos 3 Casos Clínicos -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-10" role="tablist">
+          <button
+            type="button"
+            onclick="selectClinicalCase(0)"
+            data-case-idx="0"
+            class="case-selector-btn px-5 py-3 text-[11px] uppercase tracking-[0.16em] font-semibold border border-champagne bg-champagne text-obsidian transition-all"
+          >
+            Caso 01 — Lentes Ultrafinas Naturais
+          </button>
+          <button
+            type="button"
+            onclick="selectClinicalCase(1)"
+            data-case-idx="1"
+            class="case-selector-btn px-5 py-3 text-[11px] uppercase tracking-[0.16em] font-medium border border-champagne/30 bg-charcoal text-stone-300 hover:border-champagne transition-all"
+          >
+            Caso 02 — Reabilitação &amp; Alinhamento
+          </button>
+          <button
+            type="button"
+            onclick="selectClinicalCase(2)"
+            data-case-idx="2"
+            class="case-selector-btn px-5 py-3 text-[11px] uppercase tracking-[0.16em] font-medium border border-champagne/30 bg-charcoal text-stone-300 hover:border-champagne transition-all"
+          >
+            Caso 03 — Escultura Gengival &amp; Clareamento
+          </button>
+        </div>
+
+        <!-- Palco do Comparador Deslizante Interativo -->
+        <div id="clinical-case-stage" class="border border-champagne/25 bg-charcoal p-5 sm:p-9">
+          <!-- Renderizado via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. DEPOIMENTOS & CONCIERGE DE LOCALIZAÇÃO + FAQ MINIMALISTA -->
+    <section id="unidade" class="py-20 sm:py-28 px-4 sm:px-8 bg-alabaster">
+      <div class="max-w-7xl mx-auto">
+        <!-- Depoimentos em Tipografia Editorial -->
+        <div class="mb-20">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-stonegray/25 pb-6 mb-10">
+            <div>
+              <span class="text-[11px] uppercase tracking-[0.24em] text-champagne-dark font-semibold">Relatos de Pacientes</span>
+              <h2 class="font-editorial text-3xl sm:text-5xl text-obsidian font-normal mt-1">
+                Experiências no <span class="italic text-champagne-dark">Instituto</span>
+              </h2>
+            </div>
+            <div class="text-xs uppercase tracking-[0.18em] text-obsidian font-semibold">
+              <span class="text-champagne-dark mr-1.5">★★★★★</span> 5.0 Google Reviews
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-stonegray/20">
+            <article class="pt-6 md:pt-0 md:pr-6">
+              <span class="text-champagne-dark text-sm tracking-widest">★★★★★</span>
+              <p class="font-editorial italic text-xl sm:text-2xl text-obsidian leading-relaxed mt-3 mb-4">
+                “O que mais me encantou foi a naturalidade. Minhas lentes de porcelana têm textura e transparência idênticas a dentes naturais. Atendimento impecável do início ao fim.”
+              </p>
+              <p class="text-[11px] uppercase tracking-[0.18em] font-semibold text-obsidian">Helena Vasconcelos</p>
+              <p class="text-[11px] text-stonegray mt-0.5">Lentes de Contato em Porcelana</p>
+            </article>
+
+            <article class="pt-6 md:pt-0 md:px-6">
+              <span class="text-champagne-dark text-sm tracking-widest">★★★★★</span>
+              <p class="font-editorial italic text-xl sm:text-2xl text-obsidian leading-relaxed mt-3 mb-4">
+                “Ambiente que lembra uma galeria de arquitetura, zero cheiro de consultório e pontualidade britânica. Fiz implantes suíços guiados sem nenhum desconforto.”
+              </p>
+              <p class="text-[11px] uppercase tracking-[0.18em] font-semibold text-obsidian">Eduardo Mendonça</p>
+              <p class="text-[11px] text-stonegray mt-0.5">Implantes Suíços &amp; Carga Imediata</p>
+            </article>
+
+            <article class="pt-6 md:pt-0 md:pl-6">
+              <span class="text-champagne-dark text-sm tracking-widest">★★★★★</span>
+              <p class="font-editorial italic text-xl sm:text-2xl text-obsidian leading-relaxed mt-3 mb-4">
+                “O Test-Drive do sorriso em 3D me deu total segurança para iniciar minha reabilitação com a Dra. Helena Bastos. Recomendo de olhos fechados.”
+              </p>
+              <p class="text-[11px] uppercase tracking-[0.18em] font-semibold text-obsidian">Carolina Ferraz</p>
+              <p class="text-[11px] text-stonegray mt-0.5">Planejamento Digital DSD 3D</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Concierge de Localização & FAQ Minimalista -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-stonegray/25">
+          <!-- Unidade & Concierge -->
+          <div class="lg:col-span-5 space-y-6">
+            <span class="text-[11px] uppercase tracking-[0.24em] text-champagne-dark font-semibold block">
+              Concierge &amp; Endereço
+            </span>
+            <h3 class="font-editorial text-3xl sm:text-4xl text-obsidian font-normal">
+              Atendimento exclusivo sob <span class="italic text-champagne-dark">hora marcada.</span>
+            </h3>
+
+            <div class="space-y-4 text-xs sm:text-sm text-stonegray border-l border-champagne pl-5">
+              <div>
+                <p class="uppercase tracking-[0.16em] text-[10px] font-semibold text-obsidian">Unidade Jardins • São Paulo</p>
+                <p class="mt-1">Av. Europa, 840 — Jardim Europa, São Paulo — SP<br />Valet privativo coberto no subsolo</p>
+              </div>
+              <div>
+                <p class="uppercase tracking-[0.16em] text-[10px] font-semibold text-obsidian">Horário Privativo</p>
+                <p class="mt-1">Segunda a Sexta: 08h30 às 19h30<br />Sábados: 09h00 às 14h00 (Atendimento VIP)</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <button
+                type="button"
+                onclick="openBookingDrawer()"
+                class="btn-champagne px-6 py-3.5 text-[11px] uppercase"
+              >
+                Reservar Horário Privativo
+              </button>
+              <a
+                href="https://wa.me/5511933966500?text=Ol%C3%A1%20Concierge%20Instituto%20Lumina!%20Gostaria%20de%20informações%20sobre%20uma%20avaliação%20privativa."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-6 py-3.5 border border-obsidian text-obsidian hover:bg-obsidian hover:text-white text-[11px] uppercase tracking-[0.16em] font-semibold text-center transition-colors"
+              >
+                Concierge WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- FAQ Minimalista em Acordeão -->
+          <div class="lg:col-span-7">
+            <span class="text-[11px] uppercase tracking-[0.24em] text-champagne-dark font-semibold block mb-3">
+              Esclarecimentos
+            </span>
+            <h3 class="font-editorial text-3xl text-obsidian font-normal mb-6">Perguntas Frequentes</h3>
+
+            <div class="border-t border-stonegray/25 divide-y divide-stonegray/25">
+              <div class="py-4">
+                <button type="button" onclick="toggleEditorialFaq(0)" class="w-full flex items-center justify-between gap-4 text-left">
+                  <span class="font-editorial text-xl sm:text-2xl text-obsidian">Como funciona o Test-Drive do Sorriso antes de iniciar?</span>
+                  <span id="ed-faq-icon-0" class="text-champagne-dark text-xl font-light">+</span>
+                </button>
+                <p id="ed-faq-body-0" class="hidden text-xs sm:text-sm text-stonegray leading-relaxed pt-3 pr-6">
+                  A partir do escaneamento intraoral 3D e de fotografias em estúdio, projetamos digitalmente o novo desenho dos seus dentes e aplicamos uma resina provisória sobre o sorriso sem nenhum desgaste, permitindo que você aprove o resultado no espelho antes da etapa definitiva.
+                </p>
+              </div>
+
+              <div class="py-4">
+                <button type="button" onclick="toggleEditorialFaq(1)" class="w-full flex items-center justify-between gap-4 text-left">
+                  <span class="font-editorial text-xl sm:text-2xl text-obsidian">As lentes de contato em porcelana desgastam os dentes naturais?</span>
+                  <span id="ed-faq-icon-1" class="text-champagne-dark text-xl font-light">+</span>
+                </button>
+                <p id="ed-faq-body-1" class="hidden text-xs sm:text-sm text-stonegray leading-relaxed pt-3 pr-6">
+                  Trabalhamos com laminados cerâmicos ultrafinos (0,2 mm a 0,4 mm) sob magnificação microscópica. Na maioria dos casos o preparo é nulo ou restrito apenas ao polimento superficial do esmalte, mantendo 100% da vitalidade e resistência dental.
+                </p>
+              </div>
+
+              <div class="py-4">
+                <button type="button" onclick="toggleEditorialFaq(2)" class="w-full flex items-center justify-between gap-4 text-left">
+                  <span class="font-editorial text-xl sm:text-2xl text-obsidian">Vocês oferecem suporte para reembolso de planos de saúde?</span>
+                  <span id="ed-faq-icon-2" class="text-champagne-dark text-xl font-light">+</span>
+                </button>
+                <p id="ed-faq-body-2" class="hidden text-xs sm:text-sm text-stonegray leading-relaxed pt-3 pr-6">
+                  Sim. Nosso atendimento é particular para assegurar exclusividade de horário e materiais importados, mas nossa equipe administrativa prepara todo o dossiê clínico, radiográfico e fiscal para reembolso assistido junto à sua operadora.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- MODO 2: PAINEL DA CLÍNICA (CRM EXECUTIVO — PRIVATE CLINIC MANAGEMENT) -->
+  <!-- ===================================================================== -->
+  <section id="view-crm" class="hidden flex-1 bg-alabaster py-10 sm:py-14 px-4 sm:px-8 animate-editorial">
+    <div class="max-w-7xl mx-auto">
+      <!-- Cabeçalho Executivo -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-stonegray/25 pb-6 mb-8">
+        <div>
+          <div class="inline-flex items-center gap-2.5 mb-2">
+            <span class="w-2 h-2 bg-champagne-dark animate-pulse"></span>
+            <span class="text-[10px] uppercase tracking-[0.24em] text-champagne-dark font-semibold">
+              Private Clinic Management • Tempo Real
+            </span>
+          </div>
+          <h1 class="font-editorial text-3xl sm:text-5xl text-obsidian font-normal">
+            Painel Executivo <span class="italic text-champagne-dark">&amp; Concierge CRM</span>
+          </h1>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onclick="openBookingDrawer()"
+            class="btn-champagne px-5 py-2.5 text-[11px] uppercase"
+          >
+            + Novo Agendamento VIP
+          </button>
+          <button
+            type="button"
+            onclick="openResetModal()"
+            class="px-4 py-2.5 border border-stonegray/40 hover:border-obsidian text-stonegray hover:text-obsidian text-[11px] uppercase tracking-[0.14em] font-medium transition-colors"
+          >
+            Restaurar Demo
+          </button>
+        </div>
+      </div>
+
+      <!-- 4 KPIs EXECUTIVOS EM TEMPO REAL -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+        <div class="bg-white border border-stonegray/25 p-6 shadow-atelier">
+          <span class="text-[10px] uppercase tracking-[0.2em] text-stonegray font-semibold">Avaliações Agendadas</span>
+          <p id="kpi-appointments-count" class="font-editorial text-4xl text-obsidian mt-2">0</p>
+          <p class="text-[11px] text-champagne-dark mt-1">Sincronizado com o site</p>
+        </div>
+
+        <div class="bg-white border border-stonegray/25 p-6 shadow-atelier">
+          <span class="text-[10px] uppercase tracking-[0.2em] text-stonegray font-semibold">Previsão Faturamento Estético</span>
+          <p id="kpi-aesthetic-revenue" class="font-editorial text-4xl text-obsidian mt-2">R$ 0</p>
+          <p class="text-[11px] text-emerald-700 mt-1">Potencial estimado em carteira</p>
+        </div>
+
+        <div class="bg-white border border-stonegray/25 p-6 shadow-atelier">
+          <span class="text-[10px] uppercase tracking-[0.2em] text-stonegray font-semibold">Taxa de Comparecimento</span>
+          <p id="kpi-attendance-rate" class="font-editorial text-4xl text-obsidian mt-2">98,4%</p>
+          <p class="text-[11px] text-stonegray mt-1">Confirmação ativa via Concierge</p>
+        </div>
+
+        <div class="bg-obsidian text-white border border-champagne/40 p-6 shadow-atelier">
+          <span class="text-[10px] uppercase tracking-[0.2em] text-champagne font-semibold">Leads VIP</span>
+          <p id="kpi-vip-leads" class="font-editorial text-4xl text-champagne-light mt-2">0</p>
+          <p class="text-[11px] text-stone-400 mt-1">Lentes, DSD 3D &amp; Implantes</p>
+        </div>
+      </div>
+
+      <!-- BARRA DE FILTROS POR STATUS + BUSCA -->
+      <div class="bg-white border border-stonegray/25 p-4 mb-6 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" onclick="setCrmFilter('Todos')" data-crm-filter="Todos" class="crm-filter-tab px-4 py-2 text-[11px] uppercase tracking-[0.14em] font-semibold bg-obsidian text-white">
+            Todos
+          </button>
+          <button type="button" onclick="setCrmFilter('Confirmado')" data-crm-filter="Confirmado" class="crm-filter-tab px-4 py-2 text-[11px] uppercase tracking-[0.14em] font-medium bg-alabaster text-stonegray hover:text-obsidian">
+            Confirmado
+          </button>
+          <button type="button" onclick="setCrmFilter('Aguardando Triagem')" data-crm-filter="Aguardando Triagem" class="crm-filter-tab px-4 py-2 text-[11px] uppercase tracking-[0.14em] font-medium bg-alabaster text-stonegray hover:text-obsidian">
+            Aguardando Triagem
+          </button>
+          <button type="button" onclick="setCrmFilter('Retorno VIP')" data-crm-filter="Retorno VIP" class="crm-filter-tab px-4 py-2 text-[11px] uppercase tracking-[0.14em] font-medium bg-alabaster text-stonegray hover:text-obsidian">
+            Retorno VIP
+          </button>
+        </div>
+
+        <div class="relative w-full md:w-72">
+          <input
+            type="text"
+            id="crm-search-input"
+            oninput="renderCrmAgenda()"
+            placeholder="Buscar paciente, código ou protocolo..."
+            class="w-full px-3.5 py-2 bg-alabaster border border-stonegray/30 focus:border-obsidian focus:bg-white focus:outline-none text-xs text-obsidian"
+          />
+        </div>
+      </div>
+
+      <!-- AGENDA DO DIA / CARTEIRA DE PACIENTES -->
+      <div id="crm-agenda-list" class="space-y-3.5">
+        <!-- Renderizado via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- RODAPÉ EDITORIAL COM ASSINATURA SITES.GU                              -->
+  <!-- ===================================================================== -->
+  <footer class="bg-obsidian text-stone-400 border-t border-champagne/20 py-10 px-4 sm:px-8 pb-24 sm:pb-10">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <div class="flex items-center gap-3">
+        <span class="font-editorial text-lg text-champagne">IL</span>
+        <span class="tracking-[0.16em] uppercase text-stone-300">Instituto Lumina • CRO-SP Clínico Ativo</span>
+      </div>
+      <p class="tracking-wider">
+        Arquitetura Digital por <a href="https://wa.me/5511933966500" target="_blank" rel="noopener noreferrer" class="text-champagne font-semibold hover:underline">Sites.Gu</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Badge Flutuante Discreto Sites.Gu -->
+  <a
+    href="https://wa.me/5511933966500?text=Ol%C3%A1!%20Vi%20a%20pr%C3%A9via%20editorial%20do%20Instituto%20Lumina%20(estilo%20boutique)%20e%20quero%20um%20site%20nesse%20padr%C3%A3o!"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="fixed bottom-4 right-4 z-30 flex items-center gap-2.5 px-4 py-2.5 bg-obsidian/95 text-white border border-champagne/50 shadow-xl hover:border-champagne transition-colors"
+  >
+    <span class="w-1.5 h-1.5 bg-champagne animate-ping"></span>
+    <span class="text-[11px] tracking-[0.12em] uppercase">Prévia Boutique <strong class="text-champagne">Sites.Gu</strong></span>
+  </a>
+
+  <!-- ===================================================================== -->
+  <!-- DRAWER LATERAL DE AGENDAMENTO CONCIERGE (SLIDE-OVER)                  -->
+  <!-- ===================================================================== -->
+  <div id="concierge-drawer" class="fixed inset-0 z-50 hidden" aria-modal="true" role="dialog">
+    <!-- Backdrop Escuro -->
+    <div onclick="closeBookingDrawer()" class="drawer-backdrop fixed inset-0 bg-obsidian/75 backdrop-blur-xs"></div>
+
+    <!-- Painel Lateral Deslizante -->
+    <aside class="drawer-panel relative ml-auto w-full max-w-xl h-full bg-alabaster text-obsidian shadow-2xl border-l border-champagne/35 flex flex-col overflow-hidden">
+      <!-- Topo do Drawer -->
+      <div class="bg-obsidian text-white px-6 py-5 border-b border-champagne/25 flex items-center justify-between shrink-0">
+        <div>
+          <span class="text-[10px] uppercase tracking-[0.24em] text-champagne block">Concierge Privativo</span>
+          <h2 class="font-editorial text-2xl sm:text-3xl font-normal">Agendamento &amp; Pré-Triagem</h2>
+        </div>
+        <button
+          type="button"
+          onclick="closeBookingDrawer()"
+          aria-label="Fechar painel"
+          class="w-9 h-9 border border-champagne/40 hover:border-champagne text-champagne flex items-center justify-center text-sm"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Corpo Rolável do Drawer -->
+      <div id="drawer-scroll-body" class="flex-1 overflow-y-auto p-6 sm:p-8 space-y-7">
+        <!-- Formulário de Agendamento (visível antes da confirmação) -->
+        <form id="concierge-booking-form" onsubmit="submitConciergeBooking(event)" class="space-y-7">
+          <!-- Passo 1: Protocolo Desejado -->
+          <div>
+            <label for="drawer-protocol-select" class="block text-[10px] uppercase tracking-[0.2em] font-semibold text-obsidian mb-2">
+              01. Protocolo Desejado
+            </label>
+            <select
+              id="drawer-protocol-select"
+              onchange="onDrawerProtocolChange(this.value)"
+              class="w-full px-4 py-3.5 bg-white border border-stonegray/35 focus:border-obsidian focus:outline-none text-xs sm:text-sm font-medium text-obsidian"
+            >
+              <!-- Preenchido via JS -->
+            </select>
+          </div>
+
+          <!-- Passo 2: Escolha do Especialista -->
+          <div>
+            <span class="block text-[10px] uppercase tracking-[0.2em] font-semibold text-obsidian mb-2.5">
+              02. Especialista Responsável
+            </span>
+            <div id="drawer-doctors-list" class="grid grid-cols-1 gap-2.5">
+              <!-- Preenchido via JS -->
+            </div>
+          </div>
+
+          <!-- Passo 3: Data e Horário Livre -->
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="text-[10px] uppercase tracking-[0.2em] font-semibold text-obsidian">
+                03. Data &amp; Horário Privativo
+              </span>
+              <span class="text-[10px] uppercase tracking-wider text-stonegray">Horários ocupados bloqueados</span>
+            </div>
+
+            <div id="drawer-dates-grid" class="grid grid-cols-4 gap-2 mb-3">
+              <!-- Preenchido via JS -->
+            </div>
+
+            <div id="drawer-times-grid" class="grid grid-cols-3 sm:grid-cols-4 gap-2">
+              <!-- Preenchido via JS -->
+            </div>
+          </div>
+
+          <!-- Passo 4: Dados do Paciente & Perfil de Atendimento -->
+          <div class="space-y-4 pt-2 border-t border-stonegray/25">
+            <span class="block text-[10px] uppercase tracking-[0.2em] font-semibold text-obsidian">
+              04. Identificação &amp; Perfil de Atendimento
+            </span>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="drawer-patient-name" class="block text-[10px] uppercase tracking-wider text-stonegray mb-1">Nome Completo *</label>
+                <input
+                  type="text"
+                  id="drawer-patient-name"
+                  required
+                  placeholder="Ex: Sophia Alencar"
+                  class="w-full px-3.5 py-3 bg-white border border-stonegray/35 focus:border-obsidian focus:outline-none text-xs sm:text-sm"
+                />
+              </div>
+              <div>
+                <label for="drawer-patient-phone" class="block text-[10px] uppercase tracking-wider text-stonegray mb-1">WhatsApp *</label>
+                <input
+                  type="tel"
+                  id="drawer-patient-phone"
+                  required
+                  oninput="formatBrPhone(this)"
+                  placeholder="(11) 99999-9999"
+                  class="w-full px-3.5 py-3 bg-white border border-stonegray/35 focus:border-obsidian focus:outline-none text-xs sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <!-- Perfil de Triagem -->
+            <div>
+              <label class="block text-[10px] uppercase tracking-wider text-stonegray mb-2">Perfil da Consulta *</label>
+              <div id="drawer-profiles-grid" class="grid grid-cols-1 gap-2">
+                <!-- Preenchido via JS -->
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full btn-champagne py-4 text-xs uppercase tracking-[0.18em]"
+          >
+            Confirmar Reserva Privativa
+          </button>
+        </form>
+
+        <!-- Convite Digital Privativo (exibido após confirmar) -->
+        <div id="concierge-invitation-card" class="hidden space-y-6 animate-editorial">
+          <div class="bg-obsidian text-white border border-champagne/60 p-6 sm:p-8 relative">
+            <span class="w-3 h-3 border-t border-l border-champagne absolute top-2 left-2"></span>
+            <span class="w-3 h-3 border-b border-r border-champagne absolute bottom-2 right-2"></span>
+
+            <div class="text-center border-b border-champagne/25 pb-5 mb-5">
+              <span class="text-[10px] uppercase tracking-[0.26em] text-champagne">Convite Digital Privativo</span>
+              <h3 class="font-editorial text-3xl text-white mt-1">Reserva Confirmada</h3>
+              <p id="invite-code" class="font-mono text-sm text-champagne-light tracking-widest mt-1.5">#LUM-0000</p>
+            </div>
+
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div class="flex justify-between gap-2">
+                <span class="text-stone-400">Paciente</span>
+                <span id="invite-patient" class="font-semibold text-white text-right">—</span>
+              </div>
+              <div class="flex justify-between gap-2">
+                <span class="text-stone-400">Protocolo</span>
+                <span id="invite-protocol" class="text-champagne-light text-right">—</span>
+              </div>
+              <div class="flex justify-between gap-2">
+                <span class="text-stone-400">Especialista</span>
+                <span id="invite-doctor" class="text-white text-right">—</span>
+              </div>
+              <div class="flex justify-between gap-2">
+                <span class="text-stone-400">Data &amp; Horário</span>
+                <span id="invite-datetime" class="font-semibold text-champagne text-right">—</span>
+              </div>
+              <div class="flex justify-between gap-2 border-t border-champagne/20 pt-3">
+                <span class="text-stone-400">Perfil</span>
+                <span id="invite-profile" class="text-stone-200 text-right">—</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <a
+              id="invite-whatsapp-btn"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-3.5 px-4 bg-emerald-800 hover:bg-emerald-700 text-white text-xs uppercase tracking-[0.16em] font-semibold flex items-center justify-center transition-colors"
+            >
+              Enviar Convite no WhatsApp
+            </a>
+
+            <button
+              type="button"
+              onclick="goToCrmFromInvitation()"
+              class="w-full btn-champagne py-3.5 px-4 text-xs uppercase tracking-[0.16em]"
+            >
+              Ver Registro no Painel da Clínica →
+            </button>
+
+            <button
+              type="button"
+              onclick="resetDrawerToForm()"
+              class="w-full py-2.5 text-[11px] uppercase tracking-[0.16em] text-stonegray hover:text-obsidian underline"
+            >
+              Realizar outro agendamento
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL DE CONFIRMAÇÃO DE RESET DEMO (SEM CONFIRM NATIVO)               -->
+  <!-- ===================================================================== -->
+  <div id="reset-demo-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-obsidian/80 backdrop-blur-xs">
+    <div class="bg-alabaster border border-champagne/40 max-w-sm w-full p-7 text-center shadow-2xl animate-editorial">
+      <span class="text-[10px] uppercase tracking-[0.24em] text-champagne-dark font-semibold">Painel Executivo</span>
+      <h3 class="font-editorial text-2xl text-obsidian mt-1 mb-2">Restaurar Carteira Inicial?</h3>
+      <p class="text-xs text-stonegray leading-relaxed mb-6">
+        Esta ação limpará os agendamentos de teste e restaurará os registros originais do Instituto Lumina.
+      </p>
+      <div class="flex gap-3">
+        <button type="button" onclick="closeResetModal()" class="flex-1 py-2.5 border border-stonegray/40 text-xs uppercase tracking-wider text-obsidian">
+          Cancelar
+        </button>
+        <button type="button" onclick="confirmDemoReset()" class="flex-1 btn-champagne py-2.5 text-xs uppercase">
+          Restaurar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Minimalista -->
+  <div id="editorial-toast-box" class="fixed bottom-16 right-4 z-50 space-y-2 pointer-events-none"></div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT: LOOKBOOK, COMPARADOR SLIDER, CONCIERGE DRAWER & CRM       -->
+  <!-- ===================================================================== -->
+  <script>
+    // -----------------------------------------------------------------------
+    // 1. DADOS DOS 6 PROTOCOLOS EXCLUSIVOS (LOOKBOOK)
+    // -----------------------------------------------------------------------
+    const PROTOCOLS = [
+      {
+        id: 'lentes-porcelana',
+        num: '01',
+        title: 'Lentes de Contato em Porcelana',
+        category: 'Estética Biomimética',
+        duration: '2 a 3 Sessões Clínicas',
+        technology: 'Cerâmica Feldspática & Dissilicato Suíço (0,2 mm)',
+        estimatedValue: 6800,
+        isVip: true,
+        description:
+          'Lâminas cerâmicas ultrafinas esculpidas artesanalmente para corrigir formato, proporção, diastemas e luminosidade sem desgaste invasivo, reproduzindo a microtextura e opalescência do esmalte natural.',
+        svgIllustration: `
+          <svg class="w-full h-44" viewBox="0 0 360 170" fill="none">
+            <rect x="10" y="10" width="340" height="150" stroke="#C5A47E" stroke-opacity="0.35" />
+            <line x1="180" y1="22" x2="180" y2="148" stroke="#C5A47E" stroke-opacity="0.3" stroke-dasharray="3 3" />
+            <path d="M138 42C138 34 146 30 156 30C166 30 174 34 174 42V112C174 123 166 129 156 129C146 129 138 123 138 112V42Z" fill="#FFFFFF" stroke="#0D0D0F" stroke-width="1.3"/>
+            <path d="M186 42C186 34 194 30 204 30C214 30 222 34 222 42V112C222 123 214 129 204 129C194 129 186 123 186 112V42Z" fill="#FFFFFF" stroke="#0D0D0F" stroke-width="1.3"/>
+            <!-- Camada ultrafina destacada em champagne -->
+            <path d="M142 36H170V114C170 120 164 124 156 124C148 124 142 120 142 114V36Z" stroke="#C5A47E" stroke-width="1.4" fill="#C5A47E" fill-opacity="0.12"/>
+            <path d="M190 36H218V114C218 120 212 124 204 124C196 124 190 120 190 114V36Z" stroke="#C5A47E" stroke-width="1.4" fill="#C5A47E" fill-opacity="0.12"/>
+            <text x="180" y="148" text-anchor="middle" fill="#7A746B" font-size="9" letter-spacing="2.5" font-family="Plus Jakarta Sans">ESPESSURA 0.2 MM • TEXTURA NATURAL</text>
+          </svg>
+        `
+      },
+      {
+        id: 'dsd-3d',
+        num: '02',
+        title: 'Planejamento Digital do Sorriso (DSD 3D)',
+        category: 'Arquitetura Facial',
+        duration: 'Sessão Diagnóstica Única',
+        technology: 'Scanner Intraoral HD + Estúdio Fotográfico Facial',
+        estimatedValue: 950,
+        isVip: true,
+        description:
+          'Mapeamento biométrico tridimensional que cruza as linhas dinâmicas do rosto com a proporção áurea dental. Permite realizar o Test-Drive físico em boca antes de iniciar qualquer etapa clínica.',
+        svgIllustration: `
+          <svg class="w-full h-44" viewBox="0 0 360 170" fill="none">
+            <rect x="10" y="10" width="340" height="150" stroke="#C5A47E" stroke-opacity="0.35" />
+            <circle cx="180" cy="82" r="56" stroke="#C5A47E" stroke-width="1.2" />
+            <circle cx="180" cy="82" r="36" stroke="#0D0D0F" stroke-opacity="0.35" stroke-dasharray="3 3" />
+            <line x1="85" y1="82" x2="275" y2="82" stroke="#C5A47E" stroke-width="1" />
+            <line x1="180" y1="20" x2="180" y2="144" stroke="#C5A47E" stroke-width="1" />
+            <path d="M126 78C145 112 215 112 234 78" stroke="#0D0D0F" stroke-width="1.6" stroke-linecap="round"/>
+            <text x="180" y="152" text-anchor="middle" fill="#7A746B" font-size="9" letter-spacing="2.5" font-family="Plus Jakarta Sans">BIOMETRIA FACIAL • MOCKUP TEST-DRIVE</text>
+          </svg>
+        `
+      },
+      {
+        id: 'alinhadores-premium',
+        num: '03',
+        title: 'Alinhadores Invisíveis Premium',
+        category: 'Ortodontia Contemporânea',
+        duration: '4 a 8 Meses (Média)',
+        technology: 'Polímero Multicamadado Transparente + Previsão 3D',
+        estimatedValue: 7400,
+        isVip: true,
+        description:
+          'Movimentação ortodôntica silenciosa, removível e praticamente invisível. Cada etapa do alinhamento é simulada digitalmente, reduzindo consultas presenciais e preservando o conforto absoluto.',
+        svgIllustration: `
+          <svg class="w-full h-44" viewBox="0 0 360 170" fill="none">
+            <rect x="10" y="10" width="340" height="150" stroke="#C5A47E" stroke-opacity="0.35" />
+            <path d="M75 102C105 46 255 46 285 102" stroke="#0D0D0F" stroke-width="1.5" />
+            <path d="M68 95C102 36 258 36 292 95" stroke="#C5A47E" stroke-width="2" stroke-dasharray="5 3" />
+            <circle cx="135" cy="64" r="3" fill="#C5A47E" />
+            <circle cx="180" cy="56" r="3" fill="#C5A47E" />
+            <circle cx="225" cy="64" r="3" fill="#C5A47E" />
+            <text x="180" y="146" text-anchor="middle" fill="#7A746B" font-size="9" letter-spacing="2.5" font-family="Plus Jakarta Sans">ALINHAMENTO DIGITAL INVISÍVEL</text>
+          </svg>
+        `
+      },
+      {
+        id: 'implantes-suicos',
+        num: '04',
+        title: 'Implantes Suíços & Carga Imediata',
+        category: 'Reabilitação Oral Avançada',
+        duration: 'Cirurgia Guiada em 45 min',
+        technology: 'Implantes Straumann® + Guia Tomográfico 3D',
+        estimatedValue: 5900,
+        isVip: true,
+        description:
+          'Reabilitação unitária ou total sem cortes extensos nem suturas. O planejamento tomográfico computadorizado garante osseointegração acelerada e estética gengival impecável.',
+        svgIllustration: `
+          <svg class="w-full h-44" viewBox="0 0 360 170" fill="none">
+            <rect x="10" y="10" width="340" height="150" stroke="#C5A47E" stroke-opacity="0.35" />
+            <!-- Coroa Cerâmica -->
+            <path d="M158 32C158 25 166 22 180 22C194 22 202 25 202 32V66H158V32Z" fill="#FFFFFF" stroke="#0D0D0F" stroke-width="1.4"/>
+            <!-- Pilar e Implante -->
+            <rect x="171" y="66" width="18" height="62" stroke="#C5A47E" stroke-width="1.5" fill="#C5A47E" fill-opacity="0.15"/>
+            <line x1="167" y1="80" x2="193" y2="84" stroke="#0D0D0F" stroke-width="1.2"/>
+            <line x1="167" y1="94" x2="193" y2="98" stroke="#0D0D0F" stroke-width="1.2"/>
+            <line x1="167" y1="108" x2="193" y2="112" stroke="#0D0D0F" stroke-width="1.2"/>
+            <text x="180" y="148" text-anchor="middle" fill="#7A746B" font-size="9" letter-spacing="2.5" font-family="Plus Jakarta Sans">CIRURGIA GUIADA SEM CORTES</text>
+          </svg>
+        `
+      },
+      {
+        id: 'harmonizacao-estrategica',
+        num: '05',
+        title: 'Harmonização Orofacial Estratégica',
+        category: 'Equilíbrio & Naturalidade',
+        duration: 'Sessão de 60 Minutos',
+        technology: 'Bioestimuladores de Colágeno & Ácido Hialurônico',
+        estimatedValue: 3400,
+        isVip: false,
+        description:
+          'Intervenções sutis que emolduram o sorriso: gerenciamento do envelhecimento, definição do contorno labial e relaxamento muscular terapêutico com foco em elegância e naturalidade.',
+        svgIllustration: `
+          <svg class="w-full h-44" viewBox="0 0 360 170" fill="none">
+            <rect x="10" y="10" width="340" height="150" stroke="#C5A47E" stroke-opacity="0.35" />
+            <path d="M125 28C125 78 148 124 180 132C212 124 235 78 235 28" stroke="#0D0D0F" stroke-width="1.3" fill="none"/>
+            <path d="M148 92C162 86 172 90 180 90C188 90 198 86 212 92C198 104 162 104 148 92Z" stroke="#C5A47E" stroke-width="1.6" fill="#C5A47E" fill-opacity="0.16"/>
+            <text x="180" y="150" text-anchor="middle" fill="#7A746B" font-size="9" letter-spacing="2.5" font-family="Plus Jakarta Sans">HARMONIA LABIAL &amp; CONTORNO FACIAL</text>
+          </svg>
+        `
+      },
+      {
+        id: 'clareamento-boutique',
+        num: '06',
+        title: 'Clareamento Laser Boutique',
+        category: 'Luminosidade & Prevenção',
+        duration: 'Sessão Única (50 min)',
+        technology: 'Laser Terapêutico + Dessensibilização com Hidroxiapatita',
+        estimatedValue: 1250,
+        isVip: false,
+        description:
+          'Protocolo exclusivo que devolve a luminosidade natural dos dentes sem sensibilidade pós-procedimento, associado à profilaxia ultrassônica aquecida (Guided Biofilm Therapy).',
+        svgIllustration: `
+          <svg class="w-full h-44" viewBox="0 0 360 170" fill="none">
+            <rect x="10" y="10" width="340" height="150" stroke="#C5A47E" stroke-opacity="0.35" />
+            <circle cx="180" cy="80" r="34" stroke="#C5A47E" stroke-width="1.4" fill="#FFFFFF"/>
+            <line x1="180" y1="26" x2="180" y2="38" stroke="#C5A47E" stroke-width="1.5"/>
+            <line x1="180" y1="122" x2="180" y2="134" stroke="#C5A47E" stroke-width="1.5"/>
+            <line x1="126" y1="80" x2="138" y2="80" stroke="#C5A47E" stroke-width="1.5"/>
+            <line x1="222" y1="80" x2="234" y2="80" stroke="#C5A47E" stroke-width="1.5"/>
+            <text x="180" y="152" text-anchor="middle" fill="#7A746B" font-size="9" letter-spacing="2.5" font-family="Plus Jakarta Sans">ZERO SENSIBILIDADE • HIDROXIAPATITA</text>
+          </svg>
+        `
+      }
+    ];
+
+    // -----------------------------------------------------------------------
+    // 2. CASOS CLÍNICOS PARA O COMPARADOR DESLIZANTE (ANTES & DEPOIS)
+    // -----------------------------------------------------------------------
+    const CLINICAL_CASES = [
+      {
+        code: 'CASO 01',
+        title: 'Lentes Ultrafinas Naturais (10 Elementos)',
+        summary: 'Correção de desgaste incisal, fechamento sutil de diastemas e ganho de luminosidade mantendo textura natural de esmalte.',
+        protocol: 'Lentes de Contato em Porcelana',
+        sessions: '3 Sessões',
+        preservation: '98% Esmalte Preservado',
+        shade: 'Escala Natural BL3',
+        beforeToothColor: '#E5D5B5',
+        beforeLipBg: '#231F20',
+        afterToothColor: '#FAF8F5',
+        afterLipBg: '#141417',
+        skewAngle: -3
+      },
+      {
+        code: 'CASO 02',
+        title: 'Reabilitação & Alinhamento Biomimético',
+        summary: 'Nivelamento do arco anterior com alinhadores invisíveis seguido de fragmento cerâmico minimamente invasivo nos incisivos centrais.',
+        protocol: 'Alinhadores Invisíveis + DSD 3D',
+        sessions: '5 Meses (Total)',
+        preservation: '100% Sem Desgaste',
+        shade: 'Escala Natural B1',
+        beforeToothColor: '#DFC9A4',
+        beforeLipBg: '#252122',
+        afterToothColor: '#FFFFFF',
+        afterLipBg: '#121215',
+        skewAngle: 4
+      },
+      {
+        code: 'CASO 03',
+        title: 'Escultura Gengival & Clareamento Boutique',
+        summary: 'Harmonização do zênite gengival a laser associada ao protocolo dessensibilizante com nano-hidroxiapatita.',
+        protocol: 'Clareamento Laser Boutique',
+        sessions: '2 Sessões',
+        preservation: '100% Biológica',
+        shade: '+4 Tons de Luminosidade',
+        beforeToothColor: '#D8C29D',
+        beforeLipBg: '#262122',
+        afterToothColor: '#FDFBF7',
+        afterLipBg: '#131316',
+        skewAngle: -1.5
+      }
+    ];
+
+    // -----------------------------------------------------------------------
+    // 3. ESPECIALISTAS, PERFIS DE TRIAGEM & DIAS/HORÁRIOS
+    // -----------------------------------------------------------------------
+    const SPECIALISTS = [
+      {
+        id: 'valenca',
+        name: 'Dr. Rafael Valença',
+        role: 'Diretor Clínico • Lentes & Reabilitação',
+        cro: 'CRO-SP 118.420'
+      },
+      {
+        id: 'bastos',
+        name: 'Dra. Helena Bastos',
+        role: 'Estética Dental & DSD 3D',
+        cro: 'CRO-SP 129.840'
+      },
+      {
+        id: 'andrade',
+        name: 'Dr. Lucas Andrade',
+        role: 'Implantodontia Suíça & Cirurgia Guiada',
+        cro: 'CRO-SP 112.505'
+      }
+    ];
+
+    const TRIAGE_PROFILES = [
+      {
+        id: 'Primeira Avaliação Estética',
+        title: 'Primeira Avaliação Estética',
+        desc: 'Check-up completo com escaneamento 3D e estudo facial'
+      },
+      {
+        id: 'Segunda Opinião / Orçamento',
+        title: 'Segunda Opinião / Orçamento',
+        desc: 'Análise técnica de planejamento e cronograma personalizado'
+      },
+      {
+        id: 'Atendimento Prioritário',
+        title: 'Atendimento Prioritário',
+        desc: 'Encaixe preferencial de agenda via Concierge'
+      }
+    ];
+
+    const CLINIC_HOURS = ['09:00', '10:30', '12:00', '14:00', '15:30', '17:00', '18:30'];
+
+    function generateDays() {
+      const labels = ['Hoje', 'Amanhã'];
+      const weekdays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+      const base = new Date();
+      const list = [];
+      for (let i = 0; i < 4; i++) {
+        const d = new Date(base);
+        d.setDate(base.getDate() + i);
+        const dd = String(d.getDate()).padStart(2, '0');
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        list.push({
+          key: `${d.getFullYear()}-${mm}-${dd}`,
+          label: i < 2 ? labels[i] : weekdays[d.getDay()],
+          shortDate: `${dd}/${mm}`
+        });
+      }
+      return list;
+    }
+
+    const UPCOMING_DATES = generateDays();
+
+    // -----------------------------------------------------------------------
+    // 4. ESTADO DO CRM EXECUTIVO & PERSISTÊNCIA
+    // -----------------------------------------------------------------------
+    const LUMINA_CRM_STORAGE = 'instituto_lumina_crm_v1';
+
+    function getSeedCrmPatients() {
+      const d0 = UPCOMING_DATES[0];
+      const d1 = UPCOMING_DATES[1];
+      return [
+        {
+          id: 'LUM-8101',
+          patientName: 'Helena Vasconcelos',
+          phone: '(11) 98812-4410',
+          protocolId: 'lentes-porcelana',
+          protocolTitle: 'Lentes de Contato em Porcelana',
+          estimatedValue: 6800,
+          isVip: true,
+          doctorName: 'Dr. Rafael Valença',
+          dateKey: d0.key,
+          dateLabel: `${d0.label} (${d0.shortDate})`,
+          time: '10:30',
+          profile: 'Primeira Avaliação Estética',
+          status: 'Confirmado'
+        },
+        {
+          id: 'LUM-8102',
+          patientName: 'Eduardo Mendonça',
+          phone: '(11) 99401-7723',
+          protocolId: 'implantes-suicos',
+          protocolTitle: 'Implantes Suíços & Carga Imediata',
+          estimatedValue: 5900,
+          isVip: true,
+          doctorName: 'Dr. Lucas Andrade',
+          dateKey: d0.key,
+          dateLabel: `${d0.label} (${d0.shortDate})`,
+          time: '14:00',
+          profile: 'Segunda Opinião / Orçamento',
+          status: 'Retorno VIP'
+        },
+        {
+          id: 'LUM-8103',
+          patientName: 'Carolina Ferraz',
+          phone: '(11) 97230-1988',
+          protocolId: 'dsd-3d',
+          protocolTitle: 'Planejamento Digital do Sorriso (DSD 3D)',
+          estimatedValue: 950,
+          isVip: true,
+          doctorName: 'Dra. Helena Bastos',
+          dateKey: d0.key,
+          dateLabel: `${d0.label} (${d0.shortDate})`,
+          time: '15:30',
+          profile: 'Primeira Avaliação Estética',
+          status: 'Confirmado'
+        },
+        {
+          id: 'LUM-8104',
+          patientName: 'Matheus Silveira',
+          phone: '(11) 96114-5092',
+          protocolId: 'alinhadores-premium',
+          protocolTitle: 'Alinhadores Invisíveis Premium',
+          estimatedValue: 7400,
+          isVip: true,
+          doctorName: 'Dra. Helena Bastos',
+          dateKey: d0.key,
+          dateLabel: `${d0.label} (${d0.shortDate})`,
+          time: '17:00',
+          profile: 'Atendimento Prioritário',
+          status: 'Aguardando Triagem'
+        },
+        {
+          id: 'LUM-8105',
+          patientName: 'Isabella Montenegro',
+          phone: '(11) 98340-6615',
+          protocolId: 'clareamento-boutique',
+          protocolTitle: 'Clareamento Laser Boutique',
+          estimatedValue: 1250,
+          isVip: false,
+          doctorName: 'Dr. Rafael Valença',
+          dateKey: d1.key,
+          dateLabel: `${d1.label} (${d1.shortDate})`,
+          time: '09:00',
+          profile: 'Primeira Avaliação Estética',
+          status: 'Confirmado'
+        }
+      ];
+    }
+
+    let state = {
+      currentView: 'patient',
+      activeProtocolIndex: 0,
+      activeCaseIndex: 0,
+      sliderPercent: 52,
+      drawerProtocolId: 'lentes-porcelana',
+      drawerDoctorId: 'valenca',
+      drawerDateKey: UPCOMING_DATES[0].key,
+      drawerTime: '12:00',
+      drawerProfile: 'Primeira Avaliação Estética',
+      crmFilter: 'Todos',
+      highlightedRecordId: null,
+      records: []
+    };
+
+    function loadCrmRecords() {
+      try {
+        const saved = localStorage.getItem(LUMINA_CRM_STORAGE);
+        state.records = saved ? JSON.parse(saved) : getSeedCrmPatients();
+        if (!saved) persistCrmRecords();
+      } catch (e) {
+        state.records = getSeedCrmPatients();
+      }
+    }
+
+    function persistCrmRecords() {
+      try {
+        localStorage.setItem(LUMINA_CRM_STORAGE, JSON.stringify(state.records));
+      } catch (e) {}
+    }
+
+    // -----------------------------------------------------------------------
+    // 5. ALTERNÂNCIA DE MODO (VISÃO DO PACIENTE vs. PAINEL CRM EXECUTIVO)
+    // -----------------------------------------------------------------------
+    function switchAppView(viewName) {
+      state.currentView = viewName;
+      const patientEl = document.getElementById('view-patient');
+      const crmEl = document.getElementById('view-crm');
+      const navLinks = document.getElementById('patient-nav-links');
+      const btnPatient = document.getElementById('tab-view-patient');
+      const btnCrm = document.getElementById('tab-view-crm');
+
+      if (viewName === 'patient') {
+        patientEl.classList.remove('hidden');
+        crmEl.classList.add('hidden');
+        if (navLinks) navLinks.classList.remove('xl:hidden');
+        btnPatient.className = 'px-3 py-1.5 text-[10px] sm:text-[11px] uppercase tracking-[0.14em] font-semibold transition-all bg-champagne text-obsidian';
+        btnCrm.className = 'px-3 py-1.5 text-[10px] sm:text-[11px] uppercase tracking-[0.14em] font-medium transition-all text-stone-300 hover:text-white flex items-center gap-1.5';
+      } else {
+        patientEl.classList.add('hidden');
+        crmEl.classList.remove('hidden');
+        if (navLinks) navLinks.classList.add('xl:hidden');
+        btnCrm.className = 'px-3 py-1.5 text-[10px] sm:text-[11px] uppercase tracking-[0.14em] font-semibold transition-all bg-champagne text-obsidian flex items-center gap-1.5';
+        btnPatient.className = 'px-3 py-1.5 text-[10px] sm:text-[11px] uppercase tracking-[0.14em] font-medium transition-all text-stone-300 hover:text-white';
+        renderCrmExecutiveDashboard();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function refreshLiveBadge() {
+      const el = document.getElementById('crm-live-badge');
+      if (el) el.textContent = state.records.length;
+    }
+
+    // -----------------------------------------------------------------------
+    // 6. LOOKBOOK INTERATIVO DE PROTOCOLOS
+    // -----------------------------------------------------------------------
+    function renderProtocolsLookbook() {
+      const listEl = document.getElementById('protocols-editorial-list');
+      const stageEl = document.getElementById('protocol-editorial-stage');
+      if (!listEl || !stageEl) return;
+
+      listEl.innerHTML = PROTOCOLS.map((p, idx) => {
+        const isActive = idx === state.activeProtocolIndex;
+        return `
+          <button
+            type="button"
+            onclick="selectProtocolItem(${idx})"
+            class="protocol-row ${isActive ? 'active' : ''} w-full py-5 text-left flex items-center justify-between gap-4 group"
+          >
+            <div class="flex items-baseline gap-4">
+              <span class="font-editorial italic text-xl ${isActive ? 'text-champagne-dark font-semibold' : 'text-stonegray'}">
+                ${p.num}.
+              </span>
+              <span class="font-editorial text-2xl sm:text-[1.7rem] ${isActive ? 'text-obsidian font-semibold' : 'text-obsidian/80 group-hover:text-obsidian'}">
+                ${p.title}
+              </span>
+            </div>
+            <span class="text-xs uppercase tracking-widest ${isActive ? 'text-champagne-dark font-bold' : 'text-stonegray/60'}">
+              ${isActive ? 'Ativo' : '→'}
+            </span>
+          </button>
+        `;
+      }).join('');
+
+      const active = PROTOCOLS[state.activeProtocolIndex] || PROTOCOLS[0];
+      stageEl.innerHTML = `
+        <div class="animate-editorial space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-stonegray/20 pb-4">
+            <span class="text-[10px] uppercase tracking-[0.24em] text-champagne-dark font-semibold">
+              Protocolo ${active.num} • ${active.category}
+            </span>
+            <span class="font-editorial italic text-stonegray text-base">Atelier Lumina</span>
+          </div>
+
+          <!-- Ilustração SVG Dedicada -->
+          <div class="bg-white border border-stonegray/20 p-4">
+            ${active.svgIllustration}
+          </div>
+
+          <div>
+            <h3 class="font-editorial text-3xl sm:text-4xl text-obsidian font-normal">${active.title}</h3>
+            <p class="text-xs sm:text-sm text-stonegray leading-relaxed mt-3">
+              ${active.description}
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-stonegray/20">
+            <div>
+              <span class="block text-[10px] uppercase tracking-[0.18em] text-stonegray">Tempo Médio</span>
+              <span class="font-editorial text-xl text-obsidian font-medium mt-0.5 block">${active.duration}</span>
+            </div>
+            <div>
+              <span class="block text-[10px] uppercase tracking-[0.18em] text-stonegray">Tecnologia &amp; Materiais</span>
+              <span class="font-editorial text-xl text-obsidian font-medium mt-0.5 block">${active.technology}</span>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <button
+              type="button"
+              onclick="openBookingDrawer('${active.id}')"
+              class="w-full sm:w-auto btn-champagne px-8 py-4 text-xs uppercase tracking-[0.18em]"
+            >
+              Solicitar Este Protocolo
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function selectProtocolItem(index) {
+      state.activeProtocolIndex = index;
+      renderProtocolsLookbook();
+    }
+
+    // -----------------------------------------------------------------------
+    // 7. GALERIA DE CASOS CLÍNICOS (COMPARADOR SLIDER ARRASTÁVEL)
+    // -----------------------------------------------------------------------
+    function selectClinicalCase(index) {
+      state.activeCaseIndex = index;
+      state.sliderPercent = 50;
+
+      document.querySelectorAll('.case-selector-btn').forEach((btn) => {
+        const idx = Number(btn.getAttribute('data-case-idx'));
+        if (idx === index) {
+          btn.className = 'case-selector-btn px-5 py-3 text-[11px] uppercase tracking-[0.16em] font-semibold border border-champagne bg-champagne text-obsidian transition-all';
+        } else {
+          btn.className = 'case-selector-btn px-5 py-3 text-[11px] uppercase tracking-[0.16em] font-medium border border-champagne/30 bg-charcoal text-stone-300 hover:border-champagne transition-all';
+        }
+      });
+
+      renderClinicalCaseComparator();
+    }
+
+    function buildDentalComparisonSvg(caseData, isAfter) {
+      const toothFill = isAfter ? caseData.afterToothColor : caseData.beforeToothColor;
+      const bgFill = isAfter ? caseData.afterLipBg : caseData.beforeLipBg;
+      const rot = isAfter ? 0 : caseData.skewAngle;
+      const strokeTone = isAfter ? '#C5A47E' : '#8C7E6A';
+
+      return `
+        <svg class="w-full h-full" viewBox="0 0 640 320" preserveAspectRatio="xMidYMid slice" fill="none">
+          <rect width="640" height="320" fill="${bgFill}" />
+          <!-- Linhas Arquitetônicas de Referência -->
+          <line x1="320" y1="20" x2="320" y2="300" stroke="#C5A47E" stroke-opacity="${isAfter ? '0.35' : '0.12'}" stroke-dasharray="4 4" />
+          <line x1="60" y1="160" x2="580" y2="160" stroke="#C5A47E" stroke-opacity="${isAfter ? '0.25' : '0.1'}" />
+
+          <!-- Contorno Gengival Harmônico -->
+          <path
+            d="M120 128C165 92 475 92 520 128"
+            stroke="${isAfter ? '#D99B9B' : '#9E6B6B'}"
+            stroke-width="18"
+            stroke-linecap="round"
+            stroke-opacity="0.45"
+          />
+
+          <!-- Arcada Superior Esculpida -->
+          <!-- Pré-molares e Caninos -->
+          <rect x="150" y="122" width="34" height="58" rx="11" fill="${toothFill}" stroke="${strokeTone}" stroke-width="1.4" />
+          <rect x="190" y="116" width="38" height="68" rx="12" transform="rotate(${rot * 0.6} 190 116)" fill="${toothFill}" stroke="${strokeTone}" stroke-width="1.4" />
+          <!-- Incisivos Laterais -->
+          <rect x="234" y="114" width="38" height="72" rx="12" transform="rotate(${-rot} 234 114)" fill="${toothFill}" stroke="${strokeTone}" stroke-width="1.5" />
+          <!-- Incisivos Centrais -->
+          <rect x="278" y="110" width="40" height="82" rx="13" transform="rotate(${rot * 0.4} 278 110)" fill="${toothFill}" stroke="${strokeTone}" stroke-width="1.6" />
+          <rect x="322" y="110" width="40" height="82" rx="13" transform="rotate(${-rot * 0.5} 322 110)" fill="${toothFill}" stroke="${strokeTone}" stroke-width="1.6" />
+          <!-- Incisivo Lateral Direito -->
+          <rect x="368" y="114" width="38" height="72" rx="12" transform="rotate(${rot} 368 114)" fill="${toothFill}" stroke="${strokeTone}" stroke-width="1.5" />
+          <!-- Canino e Pré-molar Direito -->
+          <rect x="412" y="116" width="38" height="68" rx="12" fill="${toothFill}" stroke="${strokeTone}" stroke-width="1.4" />
+          <rect x="456" y="122" width="34" height="58" rx="11" fill="${toothFill}" stroke="${strokeTone}" stroke-width="1.4" />
+
+          <!-- Curva do Sorriso Áureo (visível no Depois) -->
+          ${
+            isAfter
+              ? `<path d="M135 155C195 222 445 222 505 155" stroke="#C5A47E" stroke-width="1.8" stroke-linecap="round" />
+                 <text x="320" y="275" text-anchor="middle" fill="#DFC7A7" font-size="11" letter-spacing="3.5" font-family="Plus Jakarta Sans">ARQUITETURA LUMINA 3D • HARMONIA NATURAL</text>`
+              : `<text x="320" y="275" text-anchor="middle" fill="#A8A29E" font-size="11" letter-spacing="3.5" font-family="Plus Jakarta Sans">DIAGNÓSTICO INICIAL • ASSIMETRIA &amp; DESGASTE</text>`
+          }
+        </svg>
+      `;
+    }
+
+    function renderClinicalCaseComparator() {
+      const stage = document.getElementById('clinical-case-stage');
+      if (!stage) return;
+
+      const c = CLINICAL_CASES[state.activeCaseIndex] || CLINICAL_CASES[0];
+      const pct = state.sliderPercent;
+
+      stage.innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center animate-editorial">
+          <!-- Área Interativa Arrastável -->
+          <div class="lg:col-span-7">
+            <div
+              id="comparison-box"
+              class="comparison-wrapper w-full h-64 sm:h-80 border border-champagne/40 overflow-hidden cursor-ew-resize"
+            >
+              <!-- Camada Base: DEPOIS (100%) -->
+              <div class="absolute inset-0">
+                ${buildDentalComparisonSvg(c, true)}
+                <span class="absolute top-3.5 right-3.5 px-3 py-1 bg-obsidian/85 border border-champagne/60 text-champagne text-[10px] uppercase tracking-[0.18em] font-semibold">
+                  Depois • Resultado 3D
+                </span>
+              </div>
+
+              <!-- Camada Sobreposta Recortada: ANTES -->
+              <div
+                id="comparison-before-layer"
+                class="absolute inset-0 overflow-hidden"
+                style="clip-path: inset(0 ${100 - pct}% 0 0);"
+              >
+                ${buildDentalComparisonSvg(c, false)}
+                <span class="absolute top-3.5 left-3.5 px-3 py-1 bg-obsidian/85 border border-white/25 text-stone-200 text-[10px] uppercase tracking-[0.18em] font-semibold">
+                  Antes • Inicial
+                </span>
+              </div>
+
+              <!-- Linha Divisória Dourada + Alça Circular -->
+              <div
+                id="comparison-handle"
+                class="absolute top-0 bottom-0 w-[2px] bg-champagne pointer-events-none"
+                style="left: ${pct}%;"
+              >
+                <div class="w-10 h-10 rounded-full bg-obsidian border-2 border-champagne text-champagne flex items-center justify-center text-xs font-bold shadow-lg absolute top-1/2 -translate-y-1/2 -translate-x-1/2">
+                  ⇄
+                </div>
+              </div>
+            </div>
+
+            <!-- Controle Range Acessível Sincronizado -->
+            <div class="mt-4 flex items-center gap-3">
+              <span class="text-[10px] uppercase tracking-widest text-stone-400">Antes</span>
+              <input
+                type="range"
+                id="comparison-range-input"
+                min="5"
+                max="95"
+                value="${pct}"
+                oninput="updateComparatorSlider(this.value)"
+                aria-label="Comparar Antes e Depois"
+                class="flex-1 accent-[#C5A47E] cursor-pointer"
+              />
+              <span class="text-[10px] uppercase tracking-widest text-champagne">Depois</span>
+            </div>
+          </div>
+
+          <!-- Ficha Técnica do Caso Clínico -->
+          <div class="lg:col-span-5 space-y-5">
+            <span class="text-[10px] uppercase tracking-[0.24em] text-champagne font-semibold block">
+              ${c.code} • Documentação Clínica
+            </span>
+            <h3 class="font-editorial text-3xl sm:text-4xl text-white font-normal leading-tight">
+              ${c.title}
+            </h3>
+            <p class="text-xs sm:text-sm text-stone-300 leading-relaxed">
+              ${c.summary}
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 pt-3 border-t border-champagne/25 text-xs">
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-stone-400">Protocolo</span>
+                <span class="text-champagne-light font-medium mt-0.5 block">${c.protocol}</span>
+              </div>
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-stone-400">Tempo Clínico</span>
+                <span class="text-white font-medium mt-0.5 block">${c.sessions}</span>
+              </div>
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-stone-400">Preservação</span>
+                <span class="text-white font-medium mt-0.5 block">${c.preservation}</span>
+              </div>
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-stone-400">Cromaticidade</span>
+                <span class="text-champagne-light font-medium mt-0.5 block">${c.shade}</span>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onclick="openBookingDrawer()"
+              class="w-full btn-champagne py-3.5 px-5 text-xs uppercase tracking-[0.16em]"
+            >
+              Agendar Avaliação Semelhante
+            </button>
+          </div>
+        </div>
+      `;
+
+      bindComparatorDragEvents();
+    }
+
+    function updateComparatorSlider(val) {
+      const clamped = Math.max(5, Math.min(95, Number(val)));
+      state.sliderPercent = clamped;
+
+      const beforeLayer = document.getElementById('comparison-before-layer');
+      const handle = document.getElementById('comparison-handle');
+      const rangeInput = document.getElementById('comparison-range-input');
+
+      if (beforeLayer) beforeLayer.style.clipPath = `inset(0 ${100 - clamped}% 0 0)`;
+      if (handle) handle.style.left = `${clamped}%`;
+      if (rangeInput && Number(rangeInput.value) !== clamped) rangeInput.value = clamped;
+    }
+
+    function bindComparatorDragEvents() {
+      const box = document.getElementById('comparison-box');
+      if (!box) return;
+
+      let isDragging = false;
+
+      const computePercentFromClientX = (clientX) => {
+        const rect = box.getBoundingClientRect();
+        if (!rect.width) return;
+        const pct = ((clientX - rect.left) / rect.width) * 100;
+        updateComparatorSlider(pct);
+      };
+
+      box.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        computePercentFromClientX(e.clientX);
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        computePercentFromClientX(e.clientX);
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+
+      box.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches[0]) {
+          computePercentFromClientX(e.touches[0].clientX);
+        }
+      }, { passive: true });
+
+      box.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches[0]) {
+          computePercentFromClientX(e.touches[0].clientX);
+        }
+      }, { passive: true });
+    }
+
+    // -----------------------------------------------------------------------
+    // 8. DRAWER LATERAL DE AGENDAMENTO CONCIERGE (SLIDE-OVER)
+    // -----------------------------------------------------------------------
+    function openBookingDrawer(preselectedProtocolId = null) {
+      if (preselectedProtocolId) {
+        state.drawerProtocolId = preselectedProtocolId;
+      }
+      resetDrawerToForm();
+      renderDrawerControls();
+
+      const drawer = document.getElementById('concierge-drawer');
+      if (drawer) {
+        drawer.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeBookingDrawer() {
+      const drawer = document.getElementById('concierge-drawer');
+      if (drawer) {
+        drawer.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function resetDrawerToForm() {
+      const form = document.getElementById('concierge-booking-form');
+      const invite = document.getElementById('concierge-invitation-card');
+      if (form) form.classList.remove('hidden');
+      if (invite) invite.classList.add('hidden');
+    }
+
+    function isSlotOccupied(doctorName, dateKey, time) {
+      return state.records.some(
+        (r) => r.doctorName === doctorName && r.dateKey === dateKey && r.time === time
+      );
+    }
+
+    function renderDrawerControls() {
+      // 1. Select de Protocolos
+      const selectEl = document.getElementById('drawer-protocol-select');
+      if (selectEl) {
+        selectEl.innerHTML = PROTOCOLS.map(
+          (p) =>
+            `<option value="${p.id}" ${p.id === state.drawerProtocolId ? 'selected' : ''}>${p.num}. ${p.title}</option>`
+        ).join('');
+      }
+
+      // 2. Lista de Especialistas
+      const docsEl = document.getElementById('drawer-doctors-list');
+      if (docsEl) {
+        docsEl.innerHTML = SPECIALISTS.map((doc) => {
+          const active = doc.id === state.drawerDoctorId;
+          return `
+            <button
+              type="button"
+              onclick="selectDrawerDoctor('${doc.id}')"
+              class="p-3.5 border text-left transition-all flex items-center justify-between ${
+                active
+                  ? 'bg-obsidian text-white border-obsidian'
+                  : 'bg-white text-obsidian border-stonegray/30 hover:border-obsidian'
+              }"
+            >
+              <div>
+                <p class="font-editorial text-lg leading-tight">${doc.name}</p>
+                <p class="text-[11px] ${active ? 'text-champagne' : 'text-stonegray'} mt-0.5">${doc.role}</p>
+              </div>
+              <span class="text-[10px] uppercase tracking-wider ${active ? 'text-champagne-light' : 'text-stonegray'}">${doc.cro}</span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      // 3. Datas & Horários Livres
+      const datesEl = document.getElementById('drawer-dates-grid');
+      const timesEl = document.getElementById('drawer-times-grid');
+      const currentDoc = SPECIALISTS.find((d) => d.id === state.drawerDoctorId) || SPECIALISTS[0];
+
+      if (datesEl) {
+        datesEl.innerHTML = UPCOMING_DATES.map((d) => {
+          const selected = d.key === state.drawerDateKey;
+          return `
+            <button
+              type="button"
+              onclick="selectDrawerDate('${d.key}')"
+              class="py-2.5 px-2 border text-center transition-all ${
+                selected
+                  ? 'bg-champagne text-obsidian border-champagne font-semibold'
+                  : 'bg-white text-obsidian border-stonegray/30 hover:border-obsidian'
+              }"
+            >
+              <span class="block text-[10px] uppercase tracking-wider opacity-75">${d.label}</span>
+              <span class="block text-xs font-bold mt-0.5">${d.shortDate}</span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      // Ajusta horário selecionado caso já esteja ocupado
+      if (isSlotOccupied(currentDoc.name, state.drawerDateKey, state.drawerTime)) {
+        const firstFree = CLINIC_HOURS.find((h) => !isSlotOccupied(currentDoc.name, state.drawerDateKey, h));
+        if (firstFree) state.drawerTime = firstFree;
+      }
+
+      if (timesEl) {
+        timesEl.innerHTML = CLINIC_HOURS.map((hour) => {
+          const busy = isSlotOccupied(currentDoc.name, state.drawerDateKey, hour);
+          const selected = !busy && hour === state.drawerTime;
+
+          if (busy) {
+            return `
+              <button
+                type="button"
+                disabled
+                class="py-2 px-1 bg-stone-200/70 border border-stone-300 text-stone-400 text-[11px] cursor-not-allowed line-through"
+              >
+                ${hour}
+              </button>
+            `;
+          }
+
+          return `
+            <button
+              type="button"
+              onclick="selectDrawerTime('${hour}')"
+              class="py-2.5 px-1 border text-xs font-semibold transition-all ${
+                selected
+                  ? 'bg-obsidian text-champagne border-obsidian'
+                  : 'bg-white text-obsidian border-stonegray/30 hover:border-obsidian'
+              }"
+            >
+              ${hour}
+            </button>
+          `;
+        }).join('');
+      }
+
+      // 4. Perfis de Atendimento
+      const profEl = document.getElementById('drawer-profiles-grid');
+      if (profEl) {
+        profEl.innerHTML = TRIAGE_PROFILES.map((prof) => {
+          const active = prof.id === state.drawerProfile;
+          return `
+            <button
+              type="button"
+              onclick="selectDrawerProfile('${prof.id}')"
+              class="p-3 border text-left transition-all flex items-center justify-between gap-2 ${
+                active
+                  ? 'bg-white border-obsidian ring-1 ring-obsidian'
+                  : 'bg-white/70 border-stonegray/30 hover:border-obsidian'
+              }"
+            >
+              <div>
+                <p class="text-xs font-semibold text-obsidian">${prof.title}</p>
+                <p class="text-[11px] text-stonegray">${prof.desc}</p>
+              </div>
+              <span class="w-4 h-4 border ${active ? 'bg-obsidian border-obsidian text-champagne' : 'border-stonegray/50'} flex items-center justify-center text-[10px]">
+                ${active ? '✓' : ''}
+              </span>
+            </button>
+          `;
+        }).join('');
+      }
+    }
+
+    function onDrawerProtocolChange(id) {
+      state.drawerProtocolId = id;
+    }
+
+    function selectDrawerDoctor(id) {
+      state.drawerDoctorId = id;
+      renderDrawerControls();
+    }
+
+    function selectDrawerDate(key) {
+      state.drawerDateKey = key;
+      renderDrawerControls();
+    }
+
+    function selectDrawerTime(hour) {
+      state.drawerTime = hour;
+      renderDrawerControls();
+    }
+
+    function selectDrawerProfile(profileId) {
+      state.drawerProfile = profileId;
+      renderDrawerControls();
+    }
+
+    function submitConciergeBooking(event) {
+      event.preventDefault();
+      const nameInput = document.getElementById('drawer-patient-name');
+      const phoneInput = document.getElementById('drawer-patient-phone');
+
+      const patientName = nameInput.value.trim();
+      const phone = phoneInput.value.trim();
+
+      if (!patientName || phone.length < 10) {
+        showEditorialToast('Informe seu nome completo e WhatsApp válido.');
+        return;
+      }
+
+      const protocol = PROTOCOLS.find((p) => p.id === state.drawerProtocolId) || PROTOCOLS[0];
+      const doctor = SPECIALISTS.find((d) => d.id === state.drawerDoctorId) || SPECIALISTS[0];
+      const dateObj = UPCOMING_DATES.find((d) => d.key === state.drawerDateKey) || UPCOMING_DATES[0];
+
+      if (isSlotOccupied(doctor.name, dateObj.key, state.drawerTime)) {
+        showEditorialToast('Este horário acabou de ser reservado. Escolha outro horário.');
+        renderDrawerControls();
+        return;
+      }
+
+      const initialStatus =
+        state.drawerProfile === 'Atendimento Prioritário' ? 'Retorno VIP' : 'Aguardando Triagem';
+
+      const newCode = `LUM-${Math.floor(8200 + Math.random() * 1700)}`;
+      const createdRecord = {
+        id: newCode,
+        patientName,
+        phone,
+        protocolId: protocol.id,
+        protocolTitle: protocol.title,
+        estimatedValue: protocol.estimatedValue,
+        isVip: protocol.isVip || state.drawerProfile === 'Atendimento Prioritário',
+        doctorName: doctor.name,
+        dateKey: dateObj.key,
+        dateLabel: `${dateObj.label} (${dateObj.shortDate})`,
+        time: state.drawerTime,
+        profile: state.drawerProfile,
+        status: initialStatus
+      };
+
+      state.records.unshift(createdRecord);
+      state.highlightedRecordId = newCode;
+      persistCrmRecords();
+      refreshLiveBadge();
+
+      nameInput.value = '';
+      phoneInput.value = '';
+
+      // Exibe o Convite Digital Privativo dentro do Drawer
+      document.getElementById('invite-code').textContent = `#${createdRecord.id}`;
+      document.getElementById('invite-patient').textContent = createdRecord.patientName;
+      document.getElementById('invite-protocol').textContent = createdRecord.protocolTitle;
+      document.getElementById('invite-doctor').textContent = createdRecord.doctorName;
+      document.getElementById('invite-datetime').textContent = `${createdRecord.dateLabel} às ${createdRecord.time}`;
+      document.getElementById('invite-profile').textContent = createdRecord.profile;
+
+      const waMsg = encodeURIComponent(
+        `Olá Concierge Instituto Lumina! Confirmo minha solicitação de Avaliação Privativa:\n` +
+        `• Convite: #${createdRecord.id}\n` +
+        `• Paciente: ${createdRecord.patientName}\n` +
+        `• Protocolo: ${createdRecord.protocolTitle}\n` +
+        `• Especialista: ${createdRecord.doctorName}\n` +
+        `• Data/Horário: ${createdRecord.dateLabel} às ${createdRecord.time}\n` +
+        `• Perfil: ${createdRecord.profile}`
+      );
+      document.getElementById('invite-whatsapp-btn').href = `https://wa.me/5511933966500?text=${waMsg}`;
+
+      document.getElementById('concierge-booking-form').classList.add('hidden');
+      document.getElementById('concierge-invitation-card').classList.remove('hidden');
+
+      if (state.currentView === 'crm') {
+        renderCrmExecutiveDashboard();
+      }
+    }
+
+    function goToCrmFromInvitation() {
+      closeBookingDrawer();
+      state.crmFilter = 'Todos';
+      switchAppView('crm');
+      showEditorialToast('Paciente sincronizado no Painel Executivo da Clínica.');
+    }
+
+    // -----------------------------------------------------------------------
+    // 9. PAINEL DA CLÍNICA (CRM EXECUTIVO)
+    // -----------------------------------------------------------------------
+    function renderCrmExecutiveDashboard() {
+      const totalCount = state.records.length;
+      const aestheticTotal = state.records.reduce((sum, r) => sum + Number(r.estimatedValue || 0), 0);
+      const vipCount = state.records.filter((r) => r.isVip).length;
+
+      document.getElementById('kpi-appointments-count').textContent = totalCount;
+      document.getElementById('kpi-aesthetic-revenue').textContent = `R$ ${aestheticTotal.toLocaleString('pt-BR')}`;
+      document.getElementById('kpi-vip-leads').textContent = vipCount;
+
+      renderCrmAgenda();
+    }
+
+    function setCrmFilter(filterStatus) {
+      state.crmFilter = filterStatus;
+      document.querySelectorAll('.crm-filter-tab').forEach((tab) => {
+        if (tab.getAttribute('data-crm-filter') === filterStatus) {
+          tab.className = 'crm-filter-tab px-4 py-2 text-[11px] uppercase tracking-[0.14em] font-semibold bg-obsidian text-white';
+        } else {
+          tab.className = 'crm-filter-tab px-4 py-2 text-[11px] uppercase tracking-[0.14em] font-medium bg-alabaster text-stonegray hover:text-obsidian';
+        }
+      });
+      renderCrmAgenda();
+    }
+
+    function renderCrmAgenda() {
+      const container = document.getElementById('crm-agenda-list');
+      if (!container) return;
+
+      const query = (document.getElementById('crm-search-input')?.value || '').toLowerCase().trim();
+
+      const list = state.records.filter((r) => {
+        const okStatus = state.crmFilter === 'Todos' || r.status === state.crmFilter;
+        const okSearch =
+          r.patientName.toLowerCase().includes(query) ||
+          r.protocolTitle.toLowerCase().includes(query) ||
+          r.id.toLowerCase().includes(query);
+        return okStatus && okSearch;
+      });
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white border border-stonegray/25 p-10 text-center">
+            <p class="font-editorial text-2xl text-obsidian">Nenhum registro localizado neste filtro</p>
+            <p class="text-xs text-stonegray mt-1">Altere o status selecionado ou crie um novo agendamento pelo botão acima.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = list.map((rec) => {
+        const isHighlighted = rec.id === state.highlightedRecordId;
+
+        let statusTag = '';
+        if (rec.status === 'Confirmado') {
+          statusTag = '<span class="px-2.5 py-1 text-[10px] uppercase tracking-wider font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">Confirmado</span>';
+        } else if (rec.status === 'Retorno VIP') {
+          statusTag = '<span class="px-2.5 py-1 text-[10px] uppercase tracking-wider font-semibold bg-obsidian text-champagne border border-champagne/60">Retorno VIP</span>';
+        } else {
+          statusTag = '<span class="px-2.5 py-1 text-[10px] uppercase tracking-wider font-semibold bg-amber-50 text-amber-800 border border-amber-200">Aguardando Triagem</span>';
+        }
+
+        const digits = rec.phone.replace(/\D/g, '');
+        const waText = encodeURIComponent(
+          `Olá ${rec.patientName}, aqui é o Concierge do Instituto Lumina. Confirmamos seu horário privativo para ${rec.protocolTitle} com ${rec.doctorName} (${rec.dateLabel} às ${rec.time}).`
+        );
+
+        return `
+          <div class="bg-white ${isHighlighted ? 'crm-vip-highlight' : ''} border border-stonegray/25 p-5 sm:p-6 shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+            <div class="flex items-start sm:items-center gap-4">
+              <div class="px-3.5 py-2.5 bg-obsidian text-white border border-champagne/40 text-center shrink-0">
+                <span class="block font-editorial text-xl text-champagne leading-none">${rec.time}</span>
+                <span class="block text-[9px] uppercase tracking-widest text-stone-300 mt-1">${rec.dateLabel.split(' ')[0]}</span>
+              </div>
+
+              <div class="space-y-1">
+                <div class="flex items-center gap-2.5 flex-wrap">
+                  <h3 class="font-editorial text-2xl text-obsidian font-medium">${rec.patientName}</h3>
+                  <span class="font-mono text-[11px] text-stonegray">#${rec.id}</span>
+                  ${statusTag}
+                </div>
+                <p class="text-xs sm:text-sm text-obsidian">
+                  <strong>${rec.protocolTitle}</strong> • <span class="text-champagne-dark font-medium">${rec.doctorName}</span>
+                </p>
+                <p class="text-xs text-stonegray">
+                  WhatsApp: <strong class="text-obsidian">${rec.phone}</strong> • Perfil: ${rec.profile} • Estimativa: <strong class="text-obsidian">R$ ${Number(rec.estimatedValue).toLocaleString('pt-BR')}</strong>
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 pt-3 lg:pt-0 border-t lg:border-t-0 border-stonegray/15">
+              ${
+                rec.status !== 'Confirmado'
+                  ? `<button type="button" onclick="updateRecordStatus('${rec.id}', 'Confirmado')" class="px-3 py-2 border border-emerald-300 bg-emerald-50 hover:bg-emerald-700 text-emerald-800 hover:text-white text-[10px] uppercase tracking-wider font-semibold transition-colors">
+                      Confirmar
+                    </button>`
+                  : ''
+              }
+              ${
+                rec.status !== 'Retorno VIP'
+                  ? `<button type="button" onclick="updateRecordStatus('${rec.id}', 'Retorno VIP')" class="px-3 py-2 border border-champagne bg-alabaster hover:bg-obsidian text-obsidian hover:text-champagne text-[10px] uppercase tracking-wider font-semibold transition-colors">
+                      Marcar VIP
+                    </button>`
+                  : ''
+              }
+              <a
+                href="https://wa.me/55${digits}?text=${waText}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 bg-obsidian hover:bg-champagne text-white hover:text-obsidian text-[10px] uppercase tracking-[0.14em] font-semibold transition-colors"
+              >
+                WhatsApp Concierge
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updateRecordStatus(recordId, nextStatus) {
+      const target = state.records.find((r) => r.id === recordId);
+      if (!target) return;
+      target.status = nextStatus;
+      persistCrmRecords();
+      renderCrmExecutiveDashboard();
+      showEditorialToast(`Status de ${target.patientName} atualizado para "${nextStatus}".`);
+    }
+
+    // -----------------------------------------------------------------------
+    // 10. FAQ, MÁSCARA TELEFONE, RESET MODAL & TOAST
+    // -----------------------------------------------------------------------
+    function toggleEditorialFaq(idx) {
+      const body = document.getElementById(`ed-faq-body-${idx}`);
+      const icon = document.getElementById(`ed-faq-icon-${idx}`);
+      if (!body || !icon) return;
+      const hidden = body.classList.contains('hidden');
+      body.classList.toggle('hidden', !hidden);
+      icon.textContent = hidden ? '−' : '+';
+    }
+
+    function formatBrPhone(el) {
+      let d = el.value.replace(/\D/g, '').slice(0, 11);
+      if (d.length > 6) {
+        el.value = `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+      } else if (d.length > 2) {
+        el.value = `(${d.slice(0, 2)}) ${d.slice(2)}`;
+      } else if (d.length > 0) {
+        el.value = `(${d}`;
+      }
+    }
+
+    function openResetModal() {
+      const m = document.getElementById('reset-demo-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closeResetModal() {
+      const m = document.getElementById('reset-demo-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    function confirmDemoReset() {
+      state.records = getSeedCrmPatients();
+      state.highlightedRecordId = null;
+      persistCrmRecords();
+      refreshLiveBadge();
+      closeResetModal();
+      renderCrmExecutiveDashboard();
+      renderDrawerControls();
+      showEditorialToast('Carteira de demonstração restaurada.');
+    }
+
+    function showEditorialToast(text) {
+      const box = document.getElementById('editorial-toast-box');
+      if (!box) return;
+      const item = document.createElement('div');
+      item.className = 'pointer-events-auto bg-obsidian text-white border border-champagne px-4 py-3 text-xs tracking-wide shadow-2xl animate-editorial';
+      item.innerHTML = `<span class="text-champagne mr-2">◆</span>${text}`;
+      box.appendChild(item);
+
+      setTimeout(() => {
+        item.style.opacity = '0';
+        item.style.transition = 'opacity 0.25s ease';
+        setTimeout(() => item.remove(), 260);
+      }, 3200);
+    }
+
+    // -----------------------------------------------------------------------
+    // 11. INICIALIZAÇÃO
+    // -----------------------------------------------------------------------
+    window.addEventListener('DOMContentLoaded', () => {
+      loadCrmRecords();
+      refreshLiveBadge();
+      renderProtocolsLookbook();
+      renderClinicalCaseComparator();
+      renderDrawerControls();
+      renderCrmExecutiveDashboard();
+    });
+  </script>
+</body>
+</html>
